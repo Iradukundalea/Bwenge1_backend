@@ -44,6 +44,5 @@ export const getCommunityProfilePicS3File = (fileKey) => {
   // console.log(downloadParams);
   const res = s3.getObject(downloadParams);
   // console.log(res);
-  // return res.createReadStream();
-  return res;
+  return res.createReadStream();
 };
