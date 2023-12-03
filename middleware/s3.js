@@ -50,5 +50,6 @@ export const getS3File = (fileKey) => {
   console.log(downloadParams);
   const res = s3.getObject(downloadParams);
   console.log(res);
-  return res.createReadStream();
+  // return res.createReadStream();
+  return res;
 };

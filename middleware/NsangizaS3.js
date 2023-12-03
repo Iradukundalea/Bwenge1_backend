@@ -17,7 +17,7 @@ const s3 = new S3({
 // uploads a file to s3
 export const uploadFile = (file, filepath) => {
   //   const fileStream = fs.createReadStream(file.path);
-  console.log(bucketName);
+  // console.log(bucketName);
 
   const uploadParams = {
     Bucket: bucketName,
@@ -29,7 +29,7 @@ export const uploadFile = (file, filepath) => {
 };
 export const uploadImageFile = (file, filepath) => {
   //   const fileStream = fs.createReadStream(file.path);
-  console.log(file);
+  // console.log(file);
 
   const uploadParams = {
     Bucket: bucketName,
@@ -45,8 +45,9 @@ export const getNsangizaS3File = (fileKey) => {
     Key: fileKey,
     Bucket: bucketName,
   };
-  console.log(downloadParams);
+  // console.log(downloadParams);
   const res = s3.getObject(downloadParams);
-  console.log(res);
-  return res.createReadStream();
+  // console.log(res);
+  // return res.createReadStream();
+  return res;
 };

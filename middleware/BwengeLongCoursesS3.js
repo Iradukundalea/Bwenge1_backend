@@ -1,24 +1,27 @@
 import fs from "fs";
-import S3 from "aws-sdk/clients/s3.js";
+import AWS from "aws-sdk";
 
 import dotenv from "dotenv";
 dotenv.config({ path: "./config.env" });
 
 const bucketName = process.env.BWENGE_COURSE_AWS_BUCKET_NAME;
 const region = process.env.BWENGE_COURSE_AWS_BUCKET_REGION;
-const accessKeyId = process.env.BWENGE_COURSE_AWS_ACCESS_KEY;
-const secretAccessKey = process.env.BWENGE_COURSE_AWS_SECRET_KEY;
+const accessKeyId = "AKIA4AFWCR7PEY2CDYHW";
+const secretAccessKey = "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 ";
 
-const s3 = new S3({
-  region,
-  accessKeyId,
-  secretAccessKey,
+AWS.config.update({ region });
+
+const s3 = new AWS.S3({
+  credentials: {
+    accessKeyId,
+    secretAccessKey,
+  },
 });
 
 // uploads a file to s3
 export const uploadFile = (file, filepath) => {
   //   const fileStream = fs.createReadStream(file.path);
-  console.log(bucketName);
+  console.log({ bucketName });
 
   const uploadParams = {
     Bucket: bucketName,
@@ -34,10 +37,11 @@ export const getBwengeCourseS3File = (fileKey) => {
     Key: fileKey,
     Bucket: bucketName,
   };
-  console.log(downloadParams);
+  console.log({ downloadParams });
   const res = s3.getObject(downloadParams);
-  console.log(res);
-  return res.createReadStream();
+  console.log({ res });
+  // return res.createReadStream();
+  return res;
 };
 export const uploadImageFile = async (file, filepath) => {
   //   const fileStream = fs.createReadStream(file.path);
