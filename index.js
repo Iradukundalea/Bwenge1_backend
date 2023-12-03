@@ -125,7 +125,9 @@ app.use("/NsangizaTheme", (req, res) => {
 });
 app.use("/Projects", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
-  const resul = getBWENGE_DIASPORA_PROJECTSS3File(theurl.substr(1, theurl.length - 1));
+  const resul = getBWENGE_DIASPORA_PROJECTSS3File(
+    theurl.substr(1, theurl.length - 1)
+  );
   resul.pipe(res);
 });
 app.use("/profilepics", (req, res) => {
@@ -146,7 +148,9 @@ app.use("/Bwengeshortcourses", (req, res) => {
 
 app.use("/communityprofilepics", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
-  const resul = getCommunityProfilePicS3File(theurl.substr(1, theurl.length - 1));
+  const resul = getCommunityProfilePicS3File(
+    theurl.substr(1, theurl.length - 1)
+  );
   resul.pipe(res);
 });
 
@@ -232,7 +236,8 @@ async function startServer() {
   });
 
   const CONNECTION_URL =
-    process.env.MONGO_URI || "mongodb+srv://elvito21:Joseph21pilots@nodeapp1.dvghq.mongodb.net/bwengedb?retryWrites=true&w=majority";
+    process.env.MONGO_URI ||
+    "mongodb+srv://elvito21:Joseph21pilots@nodeapp1.dvghq.mongodb.net/bwengedb?retryWrites=true&w=majority";
 
   mongoose
     .connect(CONNECTION_URL, {

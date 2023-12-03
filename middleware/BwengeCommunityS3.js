@@ -24,7 +24,7 @@ export const uploadImageFile = (file, filepath) => {
 };
 
 export async function generateUploadURL() {
-  console.log(S3);
+  // console.log(S3);
   const rawBytes = await randomBytes(16);
   const imageName = rawBytes.toString("hex");
   const params = {
@@ -41,8 +41,8 @@ export const getCommunityProfilePicS3File = (fileKey) => {
     Key: fileKey,
     Bucket: bucketName,
   };
-  console.log(downloadParams);
+  // console.log(downloadParams);
   const res = s3.getObject(downloadParams);
-  console.log(res);
+  // console.log(res);
   return res.createReadStream();
 };
