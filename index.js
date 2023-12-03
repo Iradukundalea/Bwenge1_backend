@@ -115,40 +115,35 @@ app.use("/Mooccourses", (req, res) => {
   console.log(decodeURI(req.originalUrl));
   const theurl = decodeURI(req.originalUrl);
   const resul = getS3File(theurl.substr(1, theurl.length - 1));
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 
 app.use("/NsangizaTheme", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getNsangizaS3File(theurl.substr(1, theurl.length - 1));
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 app.use("/Projects", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
-  const fileUrl = getBWENGE_DIASPORA_PROJECTSS3File(
+  const resul = getBWENGE_DIASPORA_PROJECTSS3File(
     theurl.substr(1, theurl.length - 1)
   );
-  res.redirect(fileUrl);
+  resul.pipe(res);
 });
 app.use("/profilepics", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getProfilePicS3File(theurl.substr(1, theurl.length - 1));
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 app.use("/Bwengelongcourses", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getBwengeCourseS3File(theurl.substr(1, theurl.length - 1));
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 app.use("/Bwengeshortcourses", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getBwengeCourseS3File(theurl.substr(1, theurl.length - 1));
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 
 app.use("/communityprofilepics", (req, res) => {
@@ -156,8 +151,7 @@ app.use("/communityprofilepics", (req, res) => {
   const resul = getCommunityProfilePicS3File(
     theurl.substr(1, theurl.length - 1)
   );
-  // resul.pipe(res);
-  res.send(resul);
+  resul.pipe(res);
 });
 
 app.use(cors());

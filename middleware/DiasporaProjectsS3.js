@@ -33,6 +33,8 @@ export const getBWENGE_DIASPORA_PROJECTSS3File = (fileKey) => {
     Key: fileKey,
     Bucket: bucketName,
   };
-  const publicUrl = s3.getSignedUrl("getObject", downloadParams);
-  return publicUrl;
+  // console.log(downloadParams);
+  const res = s3.getObject(downloadParams);
+  // console.log(res);
+  return res.createReadStream();
 };
