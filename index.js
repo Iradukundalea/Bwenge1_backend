@@ -115,39 +115,49 @@ app.use("/Mooccourses", (req, res) => {
   console.log(decodeURI(req.originalUrl));
   const theurl = decodeURI(req.originalUrl);
   const resul = getS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  // resul.pipe(res);
+  res.send(resul);
 });
 
 app.use("/NsangizaTheme", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getNsangizaS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  // resul.pipe(res);
+  res.send(resul);
 });
 app.use("/Projects", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
-  const resul = getBWENGE_DIASPORA_PROJECTSS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  const fileUrl = getBWENGE_DIASPORA_PROJECTSS3File(
+    theurl.substr(1, theurl.length - 1)
+  );
+  res.redirect(fileUrl);
 });
 app.use("/profilepics", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getProfilePicS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  // resul.pipe(res);
+  res.send(resul);
 });
 app.use("/Bwengelongcourses", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getBwengeCourseS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  // resul.pipe(res);
+  res.send(resul);
 });
 app.use("/Bwengeshortcourses", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
   const resul = getBwengeCourseS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  // resul.pipe(res);
+  res.send(resul);
 });
 
 app.use("/communityprofilepics", (req, res) => {
   const theurl = decodeURI(req.originalUrl);
-  const resul = getCommunityProfilePicS3File(theurl.substr(1, theurl.length - 1));
-  resul.pipe(res);
+  const resul = getCommunityProfilePicS3File(
+    theurl.substr(1, theurl.length - 1)
+  );
+  // resul.pipe(res);
+  res.send(resul);
 });
 
 app.use(cors());
@@ -232,7 +242,8 @@ async function startServer() {
   });
 
   const CONNECTION_URL =
-    process.env.MONGO_URI || "mongodb+srv://elvito21:Joseph21pilots@nodeapp1.dvghq.mongodb.net/bwengedb?retryWrites=true&w=majority";
+    process.env.MONGO_URI ||
+    "mongodb+srv://elvito21:Joseph21pilots@nodeapp1.dvghq.mongodb.net/bwengedb?retryWrites=true&w=majority";
 
   mongoose
     .connect(CONNECTION_URL, {
